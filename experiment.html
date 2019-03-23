@@ -16,6 +16,10 @@
             color: #ffffff;
         }
 
+        #bad {
+            color: #000000;
+        }
+
         div.relative {
             position: relative;
         }
@@ -47,12 +51,15 @@
     /* define instructions trial */
     var instructions = {
         type: "html-keyboard-response",
-        stimulus: "<p>In this experiment, a cross will appear in the center " +
-            "of the screen.</p><p>If the dot is on the <strong>top</strong>, " +
-            "press the letter F on the keyboard as fast as you can.</p>" +
+
+        stimulus: "<p>In this experiment, a cross will appear in the center of the screen.</>" +
+            "<p>After which, a pair of words will appear at the top and bottom.</p>" +
+            "<p>After the words dissappear, a dot will appear at either the top or bottom.</p>" +
+            "<p>If the dot is on the <strong>top</strong>, press the letter F on the keyboard as fast as you can.</p>" +
             "<p>If the dot is on the <strong>bottom</strong>, press the letter J " +
             "as fast as you can.</p>" +
             "<p>Press any key to begin.</p>",
+
         post_trial_gap: 2000
     };
 
@@ -61,8 +68,16 @@
     var fixation = {
         type: 'html-keyboard-response',
         stimulus: '<div style="font-size:60px;">+</div>',
-        choices: jsPsych.NO_KEYS,
         trial_duration: 500,
+    }
+
+    var dummy_word_pair = {
+        type: 'html-keyboard-response',
+        stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+            '<p><strong>XXXX</strong></p></div>' + '</div>' +
+            '<div class="word bot">' +
+            '<p><strong>XXXX</strong></p></div>' + '</div>',
+        trial_duration: 1000,
     }
 
     /* random dot */
@@ -535,7 +550,7 @@
                 '<p><strong>HARM</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>HATE</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>WALK</strong></p></div>' + '</div>'
@@ -559,7 +574,7 @@
                 '<p><strong>HARMFUL</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>HURTFUL</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>SHUTTER</strong></p></div>' + '</div>'
@@ -583,7 +598,7 @@
                 '<p><strong>SPITEFUL</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>THREATEN</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>SUITCASE</strong></p></div>' + '</div>'
@@ -607,7 +622,7 @@
                 '<p><strong>DESTRUCTIVE</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>THREATENING</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>TEMPERATURE</strong></p></div>' + '</div>'
@@ -631,7 +646,7 @@
                 '<p><strong>DOOM</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>GLOOM</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>DIVER</strong></p></div>' + '</div>'
@@ -655,7 +670,7 @@
                 '<p><strong>DISMAL</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>MISERY</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>CHERRY</strong></p></div>' + '</div>'
@@ -679,7 +694,7 @@
                 '<p><strong>TERROR</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>DEATHLY</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>BOOKLET</strong></p></div>' + '</div>'
@@ -703,7 +718,7 @@
                 '<p><strong>PAINFUL</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>UNPLEASANT</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>PERFORMING</strong></p></div>' + '</div>'
@@ -729,7 +744,7 @@
                 '<p><strong>SELFISH</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>HAUGHTY</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>HYBRIDS</strong></p></div>' + '</div>'
@@ -753,7 +768,7 @@
                 '<p><strong>UNGRATEFUL</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>UNTHANKFUL</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>MULTISTAGE</strong></p></div>' + '</div>'
@@ -777,7 +792,7 @@
                 '<p><strong>ENTITLEMENT</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>INGRATITUDE</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>LINGUISTICS</strong></p></div>' + '</div>'
@@ -789,7 +804,7 @@
                 '<p><strong>INCONSIDERATE</strong></p></div>' + '</div>'
         },
         {
-        stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
                 '<p><strong>UNAPPRECIATIVE</strong></p></div>' + '</div>' +
                 '<div class="word bot">' +
                 '<p><strong>WEIGHTLESSNESS</strong></p></div>' + '</div>'
@@ -800,7 +815,14 @@
         type: "html-keyboard-response",
         stimulus: jsPsych.timelineVariable('stimulus'),
         choices: jsPsych.NO_KEYS,
-        trial_duration: 500,
+        trial_duration: 1000,
+    }
+
+    var short_text_pair = {
+        type: "html-keyboard-response",
+        stimulus: jsPsych.timelineVariable('stimulus'),
+        choices: jsPsych.NO_KEYS,
+        trial_duration: 20,
     }
 
     var dot_pair = {
@@ -813,6 +835,15 @@
 
     var text_procedure = {
         timeline: [fixation, text_pair],
+        timeline_variables: text_stimuli,
+        sample: {
+            type: 'without-replacement',
+            size: 1, // 1 trials, without replacement
+        }
+    }
+
+    var short_text_procedure = {
+        timeline: [fixation, short_text_pair],
         timeline_variables: text_stimuli,
         sample: {
             type: 'without-replacement',
@@ -866,7 +897,7 @@
         key_answer: 74,
         choices: [70, 74],
         text_answer: 'J',
-        correct_text: "<p>Correct. Press %ANS%.</p>",
+        correct_text: "<p>Correct. Bot =  %ANS%.</p>",
         incorrect_text: "<p>Incorrect. Press %ANS%. Please press the correct key to continue.</p>",
         prompt: "<p>Press F if the dot is top. Press J if the dot is bottom.</p>",
         trial_duration: 2000,
@@ -875,12 +906,16 @@
     };
 
     timeline.push(fixation);
+    timeline.push(dummy_word_pair);
     timeline.push(cat_trial_top);
     timeline.push(fixation);
+    timeline.push(dummy_word_pair);
     timeline.push(cat_trial_bot);
     timeline.push(fixation);
+    timeline.push(dummy_word_pair);
     timeline.push(cat_trial_bot);
     timeline.push(fixation);
+    timeline.push(dummy_word_pair);
     timeline.push(cat_trial_top);
 
     var no_ins_exp = {
@@ -902,9 +937,10 @@
         key_answer: 70,
         choices: [70, 74],
         text_answer: 'F',
-        correct_text: "<p>Correct. Press %ANS%.</p>",
+        correct_text: "<p>Correct. Top = %ANS%.</p>",
         incorrect_text: "<p>Incorrect. Press %ANS%. Please press the correct key to continue.</p>",
         trial_duration: 2000,
+        prompt: "<p id='bad'>Press F if the dot is top. Press J if the dot is bottom.</p>",
         show_feedback_on_timeout: false,
         force_correct_button_press: true
     };
@@ -918,16 +954,25 @@
         key_answer: 74,
         choices: [70, 74],
         text_answer: 'J',
-        correct_text: "<p>Correct. Press %ANS%.</p>",
+        correct_text: "<p>Correct. Bot = %ANS%.</p>",
         incorrect_text: "<p>Incorrect. Press %ANS%. Please press the correct key to continue.</p>",
         trial_duration: 2000,
+        prompt: "<p id='bad'>Press F if the dot is top. Press J if the dot is bottom.</p>",
         show_feedback_on_timeout: false,
         force_correct_button_press: true
     };
 
+    timeline.push(fixation);
+    timeline.push(dummy_word_pair);
     timeline.push(no_i_cat_trial_top);
+    timeline.push(fixation);
+    timeline.push(dummy_word_pair);
     timeline.push(no_i_cat_trial_bot);
+    timeline.push(fixation);
+    timeline.push(dummy_word_pair);
     timeline.push(no_i_cat_trial_bot);
+    timeline.push(fixation);
+    timeline.push(dummy_word_pair);
     timeline.push(no_i_cat_trial_top);
 
     var trial_num = 0;
@@ -946,7 +991,7 @@
 
     // Instantiation
 
-    while (trial_num < 4) {
+    while (trial_num < 1) {
         timeline.push(text_procedure);
         timeline.push(dot_procedure);
         trial_num++;
@@ -963,8 +1008,32 @@
     };
     timeline.push(rest_proc);
 
-    while (trial_num < 4) {
+    while (trial_num < 1) {
         timeline.push(text_procedure);
+        timeline.push(dot_procedure);
+        trial_num++;
+    }
+
+    trial_num = 0;
+
+    // Rest
+
+    timeline.push(rest_proc);
+
+    while (trial_num < 1) {
+        timeline.push(short_text_procedure);
+        timeline.push(dot_procedure);
+        trial_num++;
+    }
+
+    trial_num = 0;
+
+    // Rest
+
+    timeline.push(rest_proc);
+
+    while (trial_num < 1) {
+        timeline.push(short_text_procedure);
         timeline.push(dot_procedure);
         trial_num++;
     }
