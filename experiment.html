@@ -33,10 +33,24 @@
         .word {
             padding: 30px;
         }
+
+        #ins_text {
+            margin-top: -30px;
+        }
+
+        #top_ins_dot {
+            margin-bottom: 60px;
+        }
+
+
+        #bot_ins_dot {
+            margin-top: 0px;
+        }
     </style>
 </head>
 
 <body></body>
+
 <script>
     /* create timeline */
     var timeline = [];
@@ -68,6 +82,7 @@
     var fixation = {
         type: 'html-keyboard-response',
         stimulus: '<div style="font-size:60px;">+</div>',
+        choices: jsPsych.NO_KEYS,
         trial_duration: 500,
     }
 
@@ -85,13 +100,13 @@
             stimulus: '<div id="top_dot" class="text wrapper">' + '<div class="word up_dot">' +
                 "<img src='img/dot.png'></img>" + '</div>' +
                 '<div class="word b">' +
-                "<img src='img/black_dot.png'></img>" + '</div>'
+                "<img src='img/black_dot.png'></img>" + '</div></div>'
         },
         {
             stimulus: '<div id="bot_dot" class="text wrapper">' + '<div class="word bot_dot">' +
                 "<img src='img/black_dot.png'></img>" + '</div>' +
                 '<div class="word b">' +
-                "<img src='img/dot.png'></img>" + '</div>'
+                "<img src='img/dot.png'></img>" + '</div></div>'
         }
 
     ];
@@ -811,11 +826,719 @@
         },
     ];
 
+    var short_text_stimuli = [
+        // Positive
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>AID</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>TAG</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>FARMER</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>CARING</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>FOURTH</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>LOVING</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>PRAISE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SAILOR</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>OPERATE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>HELPFUL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>ALTRUISM</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>ALLOCATE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>UNIVERSE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>GENEROUS</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>MERCIFUL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>INITIATE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>AMENDMENTS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>ALTRUISTIC</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BENEFICIAL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>GEOLOGICAL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>RESEARCHER</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>BENEVOLENT</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>CHARITABLE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>EXTRACTION</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>EVALUATION</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>GENEROSITY</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>KINDHEARTED</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>CYLINDRICAL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>WAKEFULNESS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>WARMHEARTED</strong></p></div>' + '</div>'
+        },
+
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>THANK</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>THESE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>LIQUID</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PRAISE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>THANKS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>COMING</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>RESEARCH</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>GRATEFUL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>THANKFUL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>FEATHERS</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>HONEYCOMB</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>GRATIFIED</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>GRATITUDE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>REFERENCE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>ABSOLUTELY</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>APPRECIATE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>GRATIFYING</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PUBLISHERS</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>DIFFERENCES</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>APPRECIATED</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>RECOGNITION</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PARTICIPATE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>ANNUNCIATION</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>APPRECIATION</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>APPRECIATIVE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>ALPHABETICAL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>PAINTBRUSHES</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>THANKFULNESS</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>THANKSGIVING</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PHOTOGRAPHER</strong></p></div>' + '</div>'
+        },
+        //30
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>CAB</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>JOY</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BLISS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>FLYER</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>GLASS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PEACE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>JOYFUL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>LATTER</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>WHETHER</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>AMAZING</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>AWESOME</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>APPEARS</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>GALLERY</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>DELIGHT</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>FABULOUS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>TRANSFER</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>LOCATION</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PLEASANT</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>TERRIFIC</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SOMETIME</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>DUPLICATE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>ENJOYABLE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>HAPPINESS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>INTERVIEW</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>RECEPTION</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>MARVELOUS</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_up" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>WONDERFUL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SOMEWHERE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="pos_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>PROPOSITION</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>OUTSTANDING</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BOY</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>GUY</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BIKE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>EXIT</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BOOK</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>FEET</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>FORK</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>RANK</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>LAKE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>CAST</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>AISLE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>STOVE</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BRUSH</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SALAD</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>CARDS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>LINES</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>CHAIR</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>TRUCK</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>CLOUD</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>QUOTE</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>QUIET</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>QUICK</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>RESIDENTIAL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>MARKETPLACE</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>ABSORB</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>RENDER</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>AERIAL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>AWAKEN</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BUTTON</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>EFFECT</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>LEAVES</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>LIGHTS</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>AIRPORT</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PROJECT</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BRIEFLY</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>CLIMATE</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BUBBLES</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>WRITERS</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>DOLPHIN</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>TEXTURE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>CIRCULAR</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>RADIATOR</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>COMPUTER</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>LANGUAGE</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>CYLINDER</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>FRICTION</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>INFINITY</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>INVESTOR</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>MOUNTAIN</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>BEHAVIOR</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>ALTERNATE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>MACHINERY</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>NARRATIVE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SPECTATOR</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>PERMANENT</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>EXPLAINED</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>TALKATIVE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>DETERGENT</strong></p></div>' + '</div>'
+        }, {
+            stimulus: '<div id="neu" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>PHOTOGRAPH</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>CONCLUSION</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>EVIL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SHOP</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>MOON</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>HARM</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>HATE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>WALK</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>SHORTS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>BETRAY</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>ABUSIVE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>ANTENNA</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>PYJAMAS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>HARMFUL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>HURTFUL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SHUTTER</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>LAUNDRY</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>REVENGE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>VICIOUS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>BILLION</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>SAMPLING</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SPITEFUL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>THREATEN</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SUITCASE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>SWIMMERS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>VENGEFUL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>MALICIOUS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PROXIMITY</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>DECLARATION</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>DESTRUCTIVE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>THREATENING</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>TEMPERATURE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>PUT</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>BAD</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>WAR</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>BAG</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>TURF</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>DOOM</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>GLOOM</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>DIVER</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>GLIDER</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>CANCER</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>DANGER</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>CAMERA</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>MODIFY</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>DISMAL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>MISERY</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>CHERRY</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>EIGHTH</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PLAGUE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>SORROW</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SLEEVE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>STATUS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>TERROR</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>DEATHLY</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>BOOKLET</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BOOKLET</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>DEATHLY</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>OBSCENE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>OATMEAL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>ARRANGE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PAINFUL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>UNPLEASANT</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>PERFORMING</strong></p></div>' + '</div>'
+        },
+
+        //Ungrateful
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>TRIANGLES</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>THANKLESS</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>ENTITLED</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>TRACKING</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>CLIENTS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>SELFISH</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>HAUGHTY</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>HYBRIDS</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>EDITORIALS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>DISMISSIVE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>NARCISSIST</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>VERNACULAR</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>FLASHLIGHT</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>UNGRATEFUL</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>UNTHANKFUL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>MULTISTAGE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>NEIGHBOURS</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>UNTHANKING</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>EGOTISTICAL</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>COMMENTATOR</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>BIOGRAPHIES</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>ENTITLEMENT</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>INGRATITUDE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>LINGUISTICS</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_bot" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>ADMINISTRATOR</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>INCONSIDERATE</strong></p></div>' + '</div>'
+        },
+        {
+            stimulus: '<div id="neg_top" class="text wrapper">' + '<div class="word up">' +
+                '<p><strong>UNAPPRECIATIVE</strong></p></div>' + '</div>' +
+                '<div class="word bot">' +
+                '<p><strong>WEIGHTLESSNESS</strong></p></div>' + '</div>'
+        },
+    ];
+
+
+
+
+
+
+
+    //Long vs. short text
     var text_pair = {
         type: "html-keyboard-response",
         stimulus: jsPsych.timelineVariable('stimulus'),
         choices: jsPsych.NO_KEYS,
-        trial_duration: 1000,
+        trial_duration: 1200,
     }
 
     var short_text_pair = {
@@ -825,6 +1548,17 @@
         trial_duration: 20,
     }
 
+    var short_text_mask = {
+        type: "html-keyboard-response",
+        stimulus: '<div id="top" class="text wrapper">' + '<div class="word up">' +
+            '<p><strong>XXXXXX</strong></p></div>' + '</div>' +
+            '<div class="word bot">' +
+            '<p><strong>XXXXXX</strong></p></div>' + '</div>',
+        choices: jsPsych.NO_KEYS,
+        trial_duration: 1160,
+    }
+
+    //show dot
     var dot_pair = {
         type: "html-keyboard-response",
         stimulus: jsPsych.timelineVariable('stimulus'),
@@ -833,6 +1567,7 @@
         trial_duration: 2000
     }
 
+    // long text
     var text_procedure = {
         timeline: [fixation, text_pair],
         timeline_variables: text_stimuli,
@@ -842,9 +1577,10 @@
         }
     }
 
+    // Short text
     var short_text_procedure = {
-        timeline: [fixation, short_text_pair],
-        timeline_variables: text_stimuli,
+        timeline: [fixation, short_text_pair, short_text_mask],
+        timeline_variables: short_text_stimuli,
         sample: {
             type: 'without-replacement',
             size: 1, // 1 trials, without replacement
@@ -860,6 +1596,7 @@
         }
     }
 
+    // Practice
     var practice_procedure = {
         timeline: [fixation, dot_pair],
         timeline_variables: dot_stimuli,
@@ -870,19 +1607,18 @@
         post_trial_gap: 1000
     }
 
-
     var cat_trial_top = {
         type: 'categorize-html',
-        stimulus: '<div id="top_dot" class="text wrapper">' + '<div class="word up_dot">' +
+        stimulus: '<div class="text wrapper">' + '<div id="top_ins_dot">' +
             "<img src='img/dot.png'></img>" + '</div>' +
-            '<div class="word b">' +
-            "<img src='img/black_dot.png'></img>" + '</div>',
+            '<div id="bot_ins_dot">' +
+            "<img src='img/black_dot.png'></img>" + '</div></div>',
         key_answer: 70,
         choices: [70, 74],
         text_answer: 'F',
-        correct_text: "<p>Correct. Top = %ANS%.</p>",
-        incorrect_text: "<p>Incorrect. Press %ANS%. Please press the correct key to continue.</p>",
-        prompt: "<p>Press F if the dot is top. Press J if the dot is bottom.</p>",
+        correct_text: "<p id='ins_text'>Correct. Top = %ANS%.</p>",
+        incorrect_text: "<p id='ins_text'>Incorrect. Press %ANS%. Please press the correct key to continue.</p>",
+        prompt: "<p id='ins_text'>Press F if the dot is top. Press J if the dot is bottom.</p>",
         trial_duration: 2000,
         show_feedback_on_timeout: false,
         force_correct_button_press: true
@@ -890,16 +1626,16 @@
 
     var cat_trial_bot = {
         type: 'categorize-html',
-        stimulus: '<div id="bot_dot" class="text wrapper">' + '<div class="word bot_dot">' +
+        stimulus: '<div class="text wrapper">' + '<div id="top_ins_dot">' +
             "<img src='img/black_dot.png'></img>" + '</div>' +
-            '<div class="word b">' +
-            "<img src='img/dot.png'></img>" + '</div>',
+            '<div id="bot_ins_dot">' +
+            "<img src='img/dot.png'></img>" + '</div> </div>',
         key_answer: 74,
         choices: [70, 74],
         text_answer: 'J',
-        correct_text: "<p>Correct. Bot =  %ANS%.</p>",
-        incorrect_text: "<p>Incorrect. Press %ANS%. Please press the correct key to continue.</p>",
-        prompt: "<p>Press F if the dot is top. Press J if the dot is bottom.</p>",
+        correct_text: "<p id='ins_text'>Correct. Bot =  %ANS%.</p>",
+        incorrect_text: "<p id='ins_text'>Incorrect. Press %ANS%. Please press the correct key to continue.</p>",
+        prompt: "<p id='ins_text'>Press F if the dot is top. Press J if the dot is bottom.</p>",
         trial_duration: 2000,
         show_feedback_on_timeout: false,
         force_correct_button_press: true
@@ -918,6 +1654,7 @@
     timeline.push(dummy_word_pair);
     timeline.push(cat_trial_top);
 
+    // No instruction practice
     var no_ins_exp = {
         type: "html-keyboard-response",
         stimulus: "<p>Now let's practice without the prompt.</p>" +
@@ -930,10 +1667,10 @@
 
     var no_i_cat_trial_top = {
         type: 'categorize-html',
-        stimulus: '<div id="top_dot" class="text wrapper">' + '<div class="word up_dot">' +
+        stimulus: '<div class="text wrapper">' + '<div id="top_ins_dot">' +
             "<img src='img/dot.png'></img>" + '</div>' +
-            '<div class="word b">' +
-            "<img src='img/black_dot.png'></img>" + '</div>',
+            '<div id="bot_ins_dot">' +
+            "<img src='img/black_dot.png'></img>" + '</div></div>',
         key_answer: 70,
         choices: [70, 74],
         text_answer: 'F',
@@ -947,10 +1684,10 @@
 
     var no_i_cat_trial_bot = {
         type: 'categorize-html',
-        stimulus: '<div id="bot_dot" class="text wrapper">' + '<div class="word bot_dot">' +
+        stimulus: '<div class="text wrapper">' + '<div id="top_ins_dot">' +
             "<img src='img/black_dot.png'></img>" + '</div>' +
-            '<div class="word b">' +
-            "<img src='img/dot.png'></img>" + '</div>',
+            '<div id="bot_ins_dot">' +
+            "<img src='img/dot.png'></img>" + '</div> </div>',
         key_answer: 74,
         choices: [70, 74],
         text_answer: 'J',
@@ -975,29 +1712,6 @@
     timeline.push(dummy_word_pair);
     timeline.push(no_i_cat_trial_top);
 
-    var trial_num = 0;
-
-    // Instantiation
-
-    var start_exp = {
-        type: "html-keyboard-response",
-        stimulus: "<p>You will start now.</p>" +
-            "<p>Press any key to begin.</p>",
-        post_trial_gap: 2000
-    };
-
-    // Start instruction
-    timeline.push(start_exp);
-
-    // Instantiation
-
-    while (trial_num < 1) {
-        timeline.push(text_procedure);
-        timeline.push(dot_procedure);
-        trial_num++;
-    }
-
-    trial_num = 0;
 
     // Rest
     var rest_proc = {
@@ -1006,39 +1720,73 @@
             "<p>Press any key to continue.</p>",
         post_trial_gap: 2000
     };
+
+    // Instantiation
+    var start_exp = {
+        type: "html-keyboard-response",
+        stimulus: "<p>You will start now.</p>" +
+            "<p>Press any key to begin.</p>",
+        post_trial_gap: 2000
+    };
+    // Start instruction
+    timeline.push(start_exp);
+
+    var trial_num = 0;
+
+    while (trial_num < 2) {
+        timeline.push(short_text_procedure);
+        timeline.push(dot_procedure);
+        trial_num++;
+    }
+
+    trial_num = 0;
     timeline.push(rest_proc);
 
-    while (trial_num < 1) {
+    while (trial_num < 2) {
+        timeline.push(short_text_procedure);
+        timeline.push(dot_procedure);
+        trial_num++;
+    }
+
+    trial_num = 0;
+    timeline.push(rest_proc);
+
+    while (trial_num < 2) {
+        timeline.push(short_text_procedure);
+        timeline.push(dot_procedure);
+        trial_num++;
+    }
+
+    trial_num = 0;
+    timeline.push(rest_proc);
+
+    // Actual Exp
+    while (trial_num < 2) {
         timeline.push(text_procedure);
         timeline.push(dot_procedure);
         trial_num++;
     }
 
     trial_num = 0;
-
-    // Rest
-
     timeline.push(rest_proc);
 
-    while (trial_num < 1) {
+    while (trial_num < 2) {
+        timeline.push(text_procedure);
+        timeline.push(dot_procedure);
+        trial_num++;
+    }
+
+    trial_num = 0;
+    timeline.push(rest_proc);
+
+    while (trial_num < 2) {
         timeline.push(short_text_procedure);
         timeline.push(dot_procedure);
         trial_num++;
     }
 
     trial_num = 0;
-
-    // Rest
-
     timeline.push(rest_proc);
-
-    while (trial_num < 1) {
-        timeline.push(short_text_procedure);
-        timeline.push(dot_procedure);
-        trial_num++;
-    }
-
-    trial_num = 0;
 
     /* start the experiment */
     jsPsych.init({
